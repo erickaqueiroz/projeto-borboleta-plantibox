@@ -1,3 +1,5 @@
+# PARTE 1
+
 Página Inicial:
 <img width="1366" height="4050" alt="Página Inicial" src="https://github.com/user-attachments/assets/4ed76a67-82fd-41cf-86e9-f4a687cf4d84" />
 
@@ -194,3 +196,5 @@ Estrutura:
 Características técnicas:
 
 * Utilização de rota dinâmica para mostrar informações sobre as plantas que foram selecionadas em cada card.
+
+# PARTE 2
