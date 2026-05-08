@@ -3,6 +3,9 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect } from "react";
 import { useState } from "react";
+import Link from "next/link";
+import Header from "./componentes/Header";
+import Footer from "./componentes/Footer";
 
 export default function Home() {
 
@@ -31,36 +34,13 @@ export default function Home() {
 
   return (
     <>
-      <header>
-        <a href="#" className="logo">
-            <img src="/assets/logoplanticaixa.jpeg" alt="Logo Ícone"/> 
-            <img src="/assets/logoplantiescrito.jpeg" alt="Logo PlantiBox"/>
-        </a>
+        <Header />
 
-        <button 
-          className="menu-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? "✖" : "☰"}
-        </button>
-
-        <nav className={menuOpen ? "active" : ""}>
-            <ul>
-                <li><a href="#como-funciona">Como Funciona</a></li>
-                <li><a href="#planos">Planos</a></li>
-                <li><a href="#plantas">Nossas Plantas</a></li>
-                <li><a href="#app">Nosso App</a></li>
-                <li><a href="#planos">Assine Já</a></li>
-            </ul>
-        </nav>
-        
-      </header>
-
-      <main>
+        <main>
           <section>
               <h1>Reconecte-se com a natureza, uma planta por vez.</h1>
               <p>Receba mini-plantas em casa todo mês e transforme seu espaço em um refúgio verde. Cuidar de plantas nunca foi tão fácil e prazeroso.</p>
-              <a href="#planos">Quero minhas plantas!</a>
+              <Link href="#planos">Quero minhas plantas!</Link>
           </section>
 
           <section id="como-funciona">
@@ -90,7 +70,7 @@ export default function Home() {
                       <li>Vaso decorativo simples</li>
                       <li>Acesso ao App Guia</li>
                   </ul>
-                  <a href="#">Assinar Starter</a>
+                  <Link href="#">Assinar Starter</Link>
               </article>
 
               <article>
@@ -102,7 +82,7 @@ export default function Home() {
                       <li>Acesso total ao App Guia</li>
                       <li>Brinde surpresa</li>
                   </ul>
-                  <a href="#">Assinar Nature Lover</a>
+                  <Link href="#">Assinar Nature Lover</Link>
               </article>
 
               <article>
@@ -114,14 +94,14 @@ export default function Home() {
                       <li>Acesso total ao App Guia</li>
                       <li>2 brindes surpresa</li>
                   </ul>
-                  <a href="#">Assinar Jungle Master</a>
+                  <Link href="#">Assinar Jungle Master</Link>
               </article>
           </section>
 
           <section id="plantas">
               <h2>Algumas das nossas mini-plantas</h2>
               <figure>
-                  <img src="/assets/suculentas.webp" alt="Suculentas"/>
+                  <Image src="/assets/suculentas.webp" alt="Suculentas" width={100} height={100}/>
                   <figcaption>
                       <h4>Suculentas</h4>
                       <p>Perfeitas para iniciantes, amam sol e pouca água.</p>
@@ -131,7 +111,7 @@ export default function Home() {
 
           <section id="app">
               <h2>Mais que plantas, um guia na sua mão</h2>
-              <img src="/assets/plantiapp.png" alt="Mockup do App"/>
+              <Image src="/assets/plantiapp.png" alt="Mockup do App" width={200} height={500}/>
               <p>Nosso app é o companheiro perfeito para sua jornada verde.</p>
               <ul>
                   <li>
@@ -158,14 +138,7 @@ export default function Home() {
           </section>
       </main>
 
-      <footer>
-          <p>Reconectando pessoas e natureza, uma planta por vez.</p>
-          <nav>
-              <a href="#">Instagram</a>
-              <a href="#">TikTok</a>
-          </nav>
-          <p>&copy; 2026 PlantiBox. Todos os direitos reservados.</p>
-      </footer>
+    <Footer />
 
     </>
   );
