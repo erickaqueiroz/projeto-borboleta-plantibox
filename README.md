@@ -385,3 +385,248 @@ return (
 
 O HTML presente nesse código funciona como o esqueleto e a estrutura semântica da sua página PlantiBox, definindo o significado e a hierarquia de cada conteúdo para que o navegador e os motores de busca entendam o que é cada parte. Através de tags como header, main e footer, ele organiza o layout em blocos lógicos, enquanto elementos de seção como section e article agrupam as informações de planos e serviços, e tags de conteúdo como h1, p, img e a dão propósito aos textos, imagens e links, garantindo que a interface tenha uma base sólida, acessível e organizada antes mesmo de receber qualquer estilo visual ou comportamento interativo.
 
+# PARTE 3 — Componentização e Página “Nossas Plantas”
+
+Nesta etapa do projeto, realizamos a componentização de partes importantes da interface utilizando React/Next.js. Criamos os componentes `Header`, `Footer` e `PlantCard`, deixando o código mais organizado, reutilizável e fácil de manter.
+
+Além disso, desenvolvemos uma nova página chamada **Nossas Plantas**, responsável por apresentar todas as plantas disponíveis na assinatura da PlantiBox.
+
+---
+
+## Componentes Criados
+
+### Header
+
+O componente `Header` foi criado para representar o cabeçalho principal da aplicação.
+
+#### Funcionalidades:
+- Exibição da logo da marca;
+- Menu de navegação;
+- Botão responsivo para abrir e fechar o menu em telas menores;
+- Utilização de `useState` para controlar o estado do menu mobile.
+
+#### Código
+
+```jsx
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+
+const Header = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    return (
+        <header>
+            <a href="#" className="logo">
+                <Image
+                    src="/assets/logoplanticaixa.jpeg"
+                    alt="Logo ícone"
+                    width={50}
+                    height={50}
+                />
+
+                <Image
+                    src="/assets/logoplantiescrito.jpeg"
+                    alt="Logo Plantibox"
+                    width={120}
+                    height={40}
+                />
+            </a>
+
+            <button
+                className="menu-toggle"
+                onClick={() => setMenuOpen(!menuOpen)}
+            >
+                {menuOpen ? "✖" : "☰"}
+            </button>
+
+            <nav className={menuOpen ? "active" : ""}>
+                <ul>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#planos">Planos</a></li>
+                    <li><a href="#plantas">Nossas Plantas</a></li>
+                    <li><a href="#app">Nosso App</a></li>
+                    <li><a href="#planos">Assine Já</a></li>
+                </ul>
+            </nav>
+        </header>
+    );
+};
+
+export default Header;
+```
+
+### Footer
+
+O componente Footer foi criado para representar o rodapé da aplicação.
+
+#### Funcionalidades:
+Frase institucional da marca;
+Links para redes sociais;
+Direitos autorais.
+
+#### Código
+
+```jsx
+const Footer = () => {
+    return (
+        <footer>
+            <p>Reconectando pessoas e natureza, uma planta por vez.</p>
+
+            <nav>
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+            </nav>
+
+            <p>&copy; 2026 PlantiBox. Todos os direitos reservados.</p>
+        </footer>
+    );
+};
+
+export default Footer;
+```
+
+### PlantCard
+
+O componente PlantCard foi criado para exibir as informações individuais de cada planta.
+
+#### Props utilizadas:
+imagem
+nome
+descricao
+
+#### Funcionalidades:
+Exibição da imagem da planta;
+Nome da planta;
+Pequena descrição sobre seus cuidados.
+
+#### Código
+
+```jsx
+const PlantCard = ({ imagem, nome, descricao }) => {
+    return (
+        <div className="card">
+            <img src={imagem} alt={nome} />
+
+            <div className="card-info">
+                <h3>{nome}</h3>
+                <p>{descricao}</p>
+            </div>
+        </div>
+    );
+};
+
+export default PlantCard;
+```
+
+### Página “Nossas Plantas”
+
+Criamos uma nova página chamada nossasPlantas, responsável por apresentar todas as plantas disponíveis na assinatura da PlantiBox.
+
+#### Nessa página:
+Importamos os componentes Header e Footer;
+Criamos um array contendo os dados das plantas;
+Utilizamos o método .map() para renderizar dinamicamente os componentes PlantCard.
+
+#### Código da Página
+
+```jsx
+import Header from "../../componentes/Header";
+import Footer from "../../componentes/Footer";
+import PlantCard from "../../componentes/PlantCard";
+
+export default function NossasPlantas() {
+
+  const plantas = [
+    {
+      id: 1,
+      nome: "Monstera",
+      descricao: "Planta tropical de sombra.",
+      imagem: "/plantas/monstera.png"
+    },
+
+    {
+      id: 2,
+      nome: "Jiboia",
+      descricao: "Fácil de cuidar.",
+      imagem: "/plantas/jiboia.png"
+    },
+
+    {
+      id: 3,
+      nome: "Cacto",
+      descricao: "Precisa de pouca água.",
+      imagem: "/plantas/cacto.png"
+    },
+
+    {
+      id: 4,
+      nome: "Zamioculca",
+      descricao: "Vive bem com pouca luz, cresce devagar e não ocupa espaço.",
+      imagem: "/plantas/zamioculca.png"
+    },
+
+    {
+      id: 5,
+      nome: "Peperômia",
+      descricao: "Precisa de pouca manutenção e gosta de luz indireta.",
+      imagem: "/plantas/peperomia.png"
+    },
+
+    {
+      id: 6,
+      nome: "Fitônia",
+      descricao: "Pequena e delicada, gosta de luz indireta.",
+      imagem: "/plantas/fitonia.png"
+    }
+  ];
+
+  return (
+    <>
+      <Header />
+
+      <main>
+        <h1>Conheça todas as nossas plantas!</h1>
+
+        <section className="grid-plantas">
+
+          {plantas.map((planta) => (
+            <PlantCard
+              key={planta.id}
+              nome={planta.nome}
+              descricao={planta.descricao}
+              imagem={planta.imagem}
+            />
+          ))}
+
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
+}
+```
+
+### Estilização no globals.css
+
+Também adicionamos uma nova classe CSS para organizar os cards em formato de grid responsivo.
+
+#### Código CSS
+
+```css
+.grid-plantas {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: 40px;
+}
+```
+
+#### Resultado
+
+Layout responsivo;
+Distribuição automática dos cards;
+Melhor organização visual da página.
