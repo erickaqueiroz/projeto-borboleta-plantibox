@@ -7,7 +7,7 @@ const Header = () => {
 
     return (
         <header>
-            <a href="#" className="logo">
+            <a href="/" className="logo">
                 <Image src="/assets/logoplanticaixa.jpeg" alt="Logo ícone" width={50} height={50}/>
                 <Image src="/assets/logoplantiescrito.jpeg" alt="Logo Plantibox" width={120} height={40}/>
             </a>
@@ -18,11 +18,11 @@ const Header = () => {
 
             <nav className={menuOpen ? "active" : ""}>
                 <ul>
-                    <li><a href="#como-funciona">Como Funciona</a></li>
-                    <li><a href="#planos">Planos</a></li>
-                    <li><a href="#plantas">Nossas Plantas</a></li>
-                    <li><a href="#app">Nosso App</a></li>
-                    <li><a href="#planos">Assine Já</a></li>
+                    <li><a href="/#como-funciona">Como Funciona</a></li>
+                    <li><a href="/#planos">Planos</a></li>
+                    <li><a href="/#plantas">Nossas Plantas</a></li>
+                    <li><a href="/#app">Nosso App</a></li>
+                    <li><a href="/login">Login</a></li>
                 </ul>
             </nav>
         </header>

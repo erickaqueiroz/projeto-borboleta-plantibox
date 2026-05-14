@@ -128,6 +128,7 @@ main section:first-of-type p {
     max-width: 600px;
 }
 
+.btn-primary,
 main section:first-of-type > a {
     display: inline-block;
     background-color: var(--verde-principal);
@@ -140,6 +141,7 @@ main section:first-of-type > a {
     transition: transform 0.2s, background-color 0.3s;
 }
 
+.btn-primary:hover,
 main section:first-of-type > a:hover {
     background-color: var(--verde-escuro);
     transform: translateY(-2px);
@@ -269,18 +271,101 @@ main section:first-of-type > a:hover {
 /* =========================================
    Nossas Plantas
 ========================================= */
-#plantas figure {
-    background: var(--branco);
-    max-width: 400px;
+/* =========================================
+   Nossas Plantas (Carousel)
+========================================= */
+#plantas {
+    text-align: center;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1000px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item {
+    position: absolute;
+    background: var(--branco);
+    width: 300px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
 }
+
+.carousel-item.active {
+    opacity: 1;
+    transform: scale(1.1) translateX(0);
+    z-index: 10;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    pointer-events: auto;
+}
+
+.carousel-item.prev {
+    opacity: 0.6;
+    transform: scale(0.85) translateX(-80%);
+    z-index: 5;
+}
+
+.carousel-item.next {
+    opacity: 0.6;
+    transform: scale(0.85) translateX(80%);
+    z-index: 5;
+}
+
+@media (max-width: 768px) {
+    .carousel-item.prev { transform: scale(0.85) translateX(-50%); }
+    .carousel-item.next { transform: scale(0.85) translateX(50%); }
+}
+
+@media (max-width: 480px) {
+    .carousel-item.prev, .carousel-item.next { opacity: 0; }
+}
+
+.carousel-btn {
+    background: var(--verde-principal);
+    color: var(--branco);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 20;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: var(--verde-escuro);
+}
+
+.carousel-btn.left { margin-right: 20px; }
+.carousel-btn.right { margin-left: 20px; }
 
 #plantas img {
     width: 100%;
-    height: auto;
+    height: 250px;
+    object-fit: cover;
     display: block;
 }
 
@@ -544,9 +629,54 @@ footer p:last-child {
 
 .grid-plantas {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 5% 5rem;
+}
 
-  grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
 
-  gap: 40px;
+
+.card {
+  background: var(--branco);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-info {
+  padding: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-info h3 {
+  font-size: 1.3rem;
+  color: var(--verde-escuro);
+  margin-bottom: 0.5rem;
+}
+
+.card-info p {
+  color: var(--texto-claro);
+  font-size: 0.95rem;
+  line-height: 1.4;
 }

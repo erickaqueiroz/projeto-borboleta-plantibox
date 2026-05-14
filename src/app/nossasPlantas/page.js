@@ -7,44 +7,57 @@ export default function NossasPlantas() {
   const plantas = [
     {
       id: 1,
-      nome: "Monstera",
-      descricao: "Planta tropical de sombra.",
-      imagem: "/plantas/monstera.png"
+      nome: "Suculentas",
+      descricao: "Perfeitas para iniciantes, amam sol e pouca água.",
+      imagem: "/assets/suculentas.webp"
     },
-
     {
       id: 2,
-      nome: "Jiboia",
-      descricao: "Fácil de cuidar.",
-      imagem: "/plantas/jiboia.png"
+      nome: "Cactos Mini",
+      descricao: "Resistentes e cheios de personalidade. Baixa manutenção.",
+      imagem: "/assets/minicactus.webp"
     },
-
     {
       id: 3,
-      nome: "Cacto",
-      descricao: "Precisa de pouca água.",
-      imagem: "/plantas/cacto.png"
+      nome: "Mini Samambaias",
+      descricao: "Folhagem exuberante que adora umidade e luz indireta.",
+      imagem: "/assets/minisamambaia.jpg"
     },
-
     {
       id: 4,
-      nome: "Zamioculca",
-      descricao: "Vive bem com pouca luz, cresce deavagar e não ocupa espaço.",
-      imagem: "/plantas/zamioculca.png"
+      nome: "Jiboia",
+      descricao: "Planta super adaptável, ótima para ambientes internos e purifica o ar.",
+      imagem: "/assets/jiboia.webp"
     },
-
     {
       id: 5,
-      nome: "Peperômia",
-      descricao: "Precisa de pouca manutenção, gosta de luz indireta.",
-      imagem: "/plantas/peperomia.png"
+      nome: "Fitônia",
+      descricao: "Pequena e com folhas desenhadas, adora sombra e umidade.",
+      imagem: "/assets/fitonia.jpg"
     },
-
     {
       id: 6,
-      nome: "Fitônia",
-      descricao: "Pequena e delicada, gosta de luz indireta.",
-      imagem: "/plantas/fitonia.png"
+      nome: "Peperômia",
+      descricao: "Folhas carnudas e fáceis de cuidar. Vai muito bem em luz indireta.",
+      imagem: "/assets/peperomia.webp"
+    },
+    {
+      id: 7,
+      nome: "Clorofito",
+      descricao: "A famosa 'planta-aranha', excelente para purificar o ar e pet-friendly.",
+      imagem: "/assets/clorofito.webp"
+    },
+    {
+      id: 8,
+      nome: "Maranta",
+      descricao: "Folhas vibrantes que se movem de acordo com a luz, a famosa 'planta rezadeira'.",
+      imagem: "/assets/maranta.webp"
+    },
+    {
+      id: 9,
+      nome: "Lírio da Paz",
+      descricao: "Elegante, fácil de cuidar e ainda ajuda a purificar o ar. Precisa de pouca luz.",
+      imagem: "/assets/liriodapaz.webp"
     }
   ];
 
@@ -53,9 +66,19 @@ export default function NossasPlantas() {
       <Header />
 
       <main>
-        <h1>Conheça todas as nossas plantas!</h1>
+        <h1 style={{ textAlign: 'center', paddingTop: '4rem', color: 'var(--verde-escuro)' }}>Conheça todas as nossas plantas!</h1>
 
-        <section className="grid-plantas">
+        <section 
+          className="grid-plantas" 
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(3, 1fr)', 
+            gap: '2.5rem', 
+            maxWidth: '1000px', 
+            margin: '0 auto', 
+            padding: '2rem 5% 5rem' 
+          }}
+        >
 
           {plantas.map((planta) => (
             <PlantCard

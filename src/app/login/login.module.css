@@ -1,0 +1,136 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--verde-principal);
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%; right: -50%; bottom: -50%;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='15' y='35' font-size='30' opacity='0.2'%3E🌿%3C/text%3E%3Ctext x='75' y='85' font-size='40' opacity='0.15'%3E🪴%3C/text%3E%3Ctext x='25' y='100' font-size='35' opacity='0.15'%3E🌱%3C/text%3E%3Ctext x='85' y='40' font-size='25' opacity='0.2'%3E🍃%3C/text%3E%3C/svg%3E");
+  transform: rotate(-10deg);
+  animation: movePlants 40s linear infinite;
+  z-index: 0;
+}
+
+@keyframes movePlants {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 120px 120px;
+  }
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background-color: #f3f0e2;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: var(--verde-escuro);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.inputGroup {
+  text-align: left;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--texto-claro);
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--texto-escuro);
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--verde-principal);
+}
+
+.button {
+  background-color: var(--verde-principal);
+  color: var(--branco);
+  padding: 1rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 1rem;
+}
+
+.button:hover {
+  background-color: var(--verde-escuro);
+  transform: translateY(-2px);
+}
+
+.buttonSecondary {
+  background-color: transparent;
+  color: var(--verde-principal);
+  padding: 1rem;
+  border: 2px solid var(--verde-principal);
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  margin-top: 0.5rem;
+}
+
+.buttonSecondary:hover {
+  background-color: var(--verde-principal);
+  color: var(--branco);
+  transform: translateY(-2px);
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--texto-claro);
+  transition: color 0.3s;
+}
+
+.backLink:hover {
+  color: var(--verde-principal);
+  text-decoration: underline;
+}
